@@ -19,6 +19,6 @@ td{
    justify-content: center;
    margin-top: 20px;
 }
-#b1{
-    margin-right: 30px;
+#b1, #b2, #b3{
+    margin:10px;
 }

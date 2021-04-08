@@ -17,11 +17,15 @@
         <div class="jumbotron">
             <h1>Welcome to Tic Tac Toe</h1>
             <p>Made by Gourav</p>
-
         </div>
-        <div id ="msg">It's X Turn</div>
+        <h3>Enter your name to get started</h3>
+        <label>Player 1:</label>
+        <input id="p1" type="text" value="" placeholder="X" >
+        <label>Player 2:</label>
+        <input id="p2" type="text" value="" placeholder="O" >
+        <button id="b1" onclick="start()" class="btn btn-primary btn-lg">Get Started</button>
+        <div id="msg"></div>
         <table align="center">
-
             <tr>
                 <td id="block1"></td>
                 <td></td>
@@ -38,9 +42,8 @@
                 <td></td>
             </tr>
         </table>
-        
+
         <div class="btns">
-            <button id="b1" class="btn btn-primary btn-lg" >Start Over</button>
             <button id="b2" class="btn btn-success btn-lg" onClick="location.reload()">Reset Game</button>
         </div>
     </div>
