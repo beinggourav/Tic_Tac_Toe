@@ -17,10 +17,11 @@
             <h4>Moves made:</h4>
             <p id="data"></p>
         </div>
+        <button class="btn btn-lg btn-success"><a href="index.html" style="text-decoration: none; color:white;" >New Game</a></button>
     </div>
 </body>
 <script>
-    document.querySelector("#draw").textContent="Oops...Match draw between "+localStorage.getItem("player1")+" and " + localStorage.getItem("player2");
+    document.querySelector("#draw").textContent="Oops...! Match draw between "+localStorage.getItem("player1")+" and " + localStorage.getItem("player2");
     document.querySelector("#data").innerHTML=localStorage.getItem("player1") + ": " + localStorage.getItem("Xmoves") + "<br>" +
                                                 localStorage.getItem("player2") + ": " + localStorage.getItem("Omoves");
 </script>
