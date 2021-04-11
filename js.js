@@ -8,6 +8,8 @@ var Xmoves;
 var Omoves;
 function start() {
     document.querySelector("#b4").disabled=true;
+    document.querySelector("#p1").disabled=true;
+    document.querySelector("#p2").disabled=true;
     // startOver.addEventListener("click", function () {
     //     for (let i = 0; i < blocks.length; i++) {
     //         blocks[i].textContent = "";
@@ -104,6 +106,8 @@ var tDraw = 0;
 function tour() {
     document.getElementById("score").style.display = "initial";
     document.querySelector("#b3").disabled=true;
+    document.querySelector("#p1").disabled=true;
+    document.querySelector("#p2").disabled=true;
     // Xmoves = 0;
     // Omoves = 0;
     d = 1;

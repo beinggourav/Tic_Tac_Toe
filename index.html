@@ -20,11 +20,11 @@
         </div>
         <h3>Enter your name to get started</h3>
         <label>Player 1:</label>
-        <input id="p1" type="text" value="" placeholder="X" >
+        <input id="p1" type="text" value="" placeholder="X" required>
         <label>Player 2:</label>
-        <input id="p2" type="text" value="" placeholder="O" >
-        <button  id="b3" onclick="start()" class="btn btn-lg btn-warning">Single Match</button>
-        <button  id="b4" onclick="tour()" class="btn btn-lg btn-warning">Tournament of three matches</button>
+        <input id="p2" type="text" value="" placeholder="O" required>
+        <button id="b3" onclick="start()" class="btn btn-lg btn-warning">Single Match</button>
+        <button id="b4" onclick="tour()" class="btn btn-lg btn-warning">Tournament of three matches</button>
         <!-- <button id="b1" onclick="start()" class="btn btn-primary btn-lg">Get Started</button> -->
         <div id="msg"></div>
         <table align="center">
@@ -53,12 +53,12 @@
         </div>
         <div class="btns">
             <button id="b2" class="btn btn-success btn-lg" onClick="location.reload()">Reset Game</button>
-            
+
         </div>
         <div class="tour-winning" id="tour-winning">
             <p id="winner-name">Wins</p>
-            <h4  id="overAll"></h4>
-            <button class="btn btn-danger btn-lg" id="tour-btn" >Next match</button>
+            <h4 id="overAll"></h4>
+            <button class="btn btn-danger btn-lg" id="tour-btn">Next match</button>
         </div>
     </div>
 </body>
