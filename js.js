@@ -13,7 +13,7 @@ function start() {
     //         blocks[i].textContent = "";
     //     }
     // });
-    document.getElementById("score").style.display = "none"
+    
     Xmoves = 0;
     Omoves = 0;
     d = 1;
@@ -102,6 +102,7 @@ var tXwins = 0;
 var tOwins = 0;
 var tDraw = 0;
 function tour() {
+    document.getElementById("score").style.display = "initial";
     document.querySelector("#b3").disabled=true;
     // Xmoves = 0;
     // Omoves = 0;
@@ -157,18 +158,21 @@ function tour() {
                 });
             } else if (tXwins > tOwins && (tOwins + tXwins + tDraw === 3)) {
                 document.getElementById("winner-name").textContent = player1 + " Won the tournament";
+                document.getElementById("overAll").innerHTML="Over all Score"+"<br>" + player1 + ": " + tXwins + "<br>" + player2 + ": " + tOwins;
                 document.getElementById("tour-btn").textContent = "New Game";
                 document.getElementById("tour-btn").addEventListener('click', function () {
                     window.location.href = "index.html";
                 })
             } else if (tXwins < tOwins && (tOwins + tXwins + tDraw === 3)) {
                 document.getElementById("winner-name").textContent = player2 + " Won the tournament";
+                document.getElementById("overAll").innerHTML="Over all Score"+"<br>" + player1 + ": " + tXwins + "<br>" + player2 + ": " + tOwins;
                 document.getElementById("tour-btn").textContent = "New Game";
                 document.getElementById("tour-btn").addEventListener('click', function () {
                     window.location.href = "index.html";
                 })
             } else {
                 document.getElementById("winner-name").textContent = "Tournament Draw!";
+                document.getElementById("overAll").innerHTML="Over all Score"+"<br>" + player1 + ": " + tXwins + "<br>" + player2 + ": " + tOwins;
                 document.getElementById("tour-btn").textContent = "New Game";
                 document.getElementById("tour-btn").addEventListener('click', function () {
                     window.location.href = "index.html";
@@ -182,13 +186,28 @@ function tour() {
             // window.location.href = "draw.html";
             document.getElementById("winner-name").textContent = "Match draw!";
             document.getElementById("tour-winning").style.display = "flex";
-            if ((tXwins + tOwins + tDraw) < 3) {
+            if ((tOwins + tXwins + tDraw) < 3) {
                 document.getElementById("tour-btn").addEventListener('click', function () {
                 document.getElementById("tour-winning").style.display = "none";
-                    tour();
+                tour();
                 });
-            } else if ((tXwins + tOwins + tDraw === 3) && tOwins === tXwins) {
+            } else if (tXwins > tOwins && (tOwins + tXwins + tDraw === 3)) {
+                document.getElementById("winner-name").textContent = player1 + " Won the tournament";
+                document.getElementById("overAll").innerHTML="Over all Score"+"<br>" + player1 + ": " + tXwins + "<br>" + player2 + ": " + tOwins;
+                document.getElementById("tour-btn").textContent = "New Game";
+                document.getElementById("tour-btn").addEventListener('click', function () {
+                    window.location.href = "index.html";
+                })
+            } else if (tXwins < tOwins && (tOwins + tXwins + tDraw === 3)) {
+                document.getElementById("winner-name").textContent = player2 + " Won the tournament";
+                document.getElementById("overAll").innerHTML="Over all Score"+"<br>" + player1 + ": " + tXwins + "<br>" + player2 + ": " + tOwins;
+                document.getElementById("tour-btn").textContent = "New Game";
+                document.getElementById("tour-btn").addEventListener('click', function () {
+                    window.location.href = "index.html";
+                })
+            } else {
                 document.getElementById("winner-name").textContent = "Tournament Draw!";
+                document.getElementById("overAll").innerHTML="Over all Score"+"<br>" + player1 + ": " + tXwins + "<br>" + player2 + ": " + tOwins;
                 document.getElementById("tour-btn").textContent = "New Game";
                 document.getElementById("tour-btn").addEventListener('click', function () {
                     window.location.href = "index.html";

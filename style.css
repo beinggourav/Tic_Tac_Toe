@@ -34,6 +34,7 @@ td{
     background-color:rgba(77, 77, 240, 0.747);
     color:white;
     text-align: center;
+    display:none;
 }
 .Shead{
     background-color: hotpink;
@@ -53,4 +54,7 @@ td{
     font-size: 3em;
     flex-direction: column;
     display: none;
+}
+#overAll{
+    color:red;
 }
