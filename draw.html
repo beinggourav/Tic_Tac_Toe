@@ -8,20 +8,25 @@
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     
     <title>Draw</title>
+    <style>
+        body{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="jumbotron">
-            <h2 id="draw"></h2>
+            <h2 style="color:brown" id="draw"></h2>
             <h5>No one won.</h5>
-            <h4>Moves made:</h4>
+            <h3 style="color:blue">Moves made:</h3>
             <p id="data"></p>
         </div>
         <button class="btn btn-lg btn-success"><a href="index.html" style="text-decoration: none; color:white;" >New Game</a></button>
     </div>
 </body>
 <script>
-    document.querySelector("#draw").textContent="Oops...! Match draw between "+localStorage.getItem("player1")+" and " + localStorage.getItem("player2");
+    document.querySelector("#draw").textContent="Match draw between "+localStorage.getItem("player1")+" and " + localStorage.getItem("player2");
     document.querySelector("#data").innerHTML=localStorage.getItem("player1") + ": " + localStorage.getItem("Xmoves") + "<br>" +
                                                 localStorage.getItem("player2") + ": " + localStorage.getItem("Omoves");
 </script>

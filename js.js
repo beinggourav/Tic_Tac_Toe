@@ -1,21 +1,19 @@
 
-
 var blocks = document.querySelectorAll("td");
 //var startOver = document.querySelector("#b2");
-
-
 
 var turn;
 var d;// to check for draw
 var Xmoves;
 var Omoves;
 function start() {
+    document.querySelector("#b4").disabled=true;
     // startOver.addEventListener("click", function () {
     //     for (let i = 0; i < blocks.length; i++) {
     //         blocks[i].textContent = "";
     //     }
     // });
-    document.getElementById("score").style.display="none"
+    document.getElementById("score").style.display = "none"
     Xmoves = 0;
     Omoves = 0;
     d = 1;
@@ -56,7 +54,7 @@ function start() {
                 document.querySelector("#msg").textContent = player2 + " wins!";
                 localStorage.setItem("wins", player2);
             }
-            window.location.href = "thankyou.html";
+            window.location.href = "victory.html";
         } else if (d === 9) {
             localStorage.setItem("Xmoves", Xmoves);
             localStorage.setItem("Omoves", Omoves);
@@ -98,30 +96,30 @@ function check(a, b, c, turn) {
     return result;
 }
 
-document.querySelector("#b4").addEventListener('click', function(){
-    
-});
 
+/* For tournament */
 var tXwins = 0;
 var tOwins = 0;
 var tDraw = 0;
 function tour() {
-
-    Xmoves = 0;
-    Omoves = 0;
+    document.querySelector("#b3").disabled=true;
+    // Xmoves = 0;
+    // Omoves = 0;
     d = 1;
     for (let i = 0; i < blocks.length; i++) {
         blocks[i].textContent = "";
     }
     var player1 = document.querySelector("#p1").value;
     var player2 = document.querySelector("#p2").value;
+    document.querySelector("#X").textContent = player1 + ": " + tXwins;
+    document.querySelector("#O").textContent = player2 + ": " + tOwins;
     if (Math.random() < 0.5) {
         turn = "X";
-        Xmoves++;
+        // Xmoves++;
         document.querySelector("#msg").textContent = "It's " + player1 + " Turn";
     } else {
         turn = "O";
-        Omoves++;
+        // Omoves++;
         document.querySelector("#msg").textContent = "It's " + player2 + " Turn";
     }
     function setTurn() {
@@ -144,40 +142,39 @@ function tour() {
                 document.querySelector("#X").textContent = player1 + ": " + tXwins;
                 document.getElementById("winner-name").textContent = player1 + " Wins!";
                 document.getElementById("tour-winning").style.display = "flex";
-                if ((tOwins + tXwins + tDraw) < 3) {
-                    document.getElementById("tour-btn").addEventListener('click', function () {
-                        document.getElementById("tour-winning").style.display = "none";
-                        tour();
-                    });
-                } else {
-                    document.getElementById("winner-name").textContent = player1 + " Won the tournament";
-                    document.getElementById("tour-btn").textContent = "New Game";
-                    document.getElementById("tour-btn").addEventListener('click', function () {
-                        window.location.href = "index.html";
-                    })
-                }
                 // localStorage.setItem("wins", player1);
 
             } else {
                 tOwins++;
-                document.querySelector("#O").textContent = player1 + ": " + tOwins;
+                document.querySelector("#O").textContent = player2 + ": " + tOwins;
                 document.getElementById("winner-name").textContent = player2 + " Wins!";
                 document.getElementById("tour-winning").style.display = "flex";
-                if ((tOwins + tXwins + tDraw) < 3) {
-                    document.getElementById("tour-btn").addEventListener('click', function () {
-                        document.getElementById("tour-winning").style.display = "none";
-                        tour();
-                    });
-                } else {
-                    document.getElementById("winner-name").textContent = player2 + " Won the tournament";
-                    document.getElementById("tour-btn").textContent = "New Game";
-                    document.getElementById("tour-btn").addEventListener('click', function () {
-                        window.location.href = "index.html";
-                    })
-                }
-                // localStorage.setItem("wins", player2);
             }
-
+            if ((tOwins + tXwins + tDraw) < 3) {
+                document.getElementById("tour-btn").addEventListener('click', function () {
+                document.getElementById("tour-winning").style.display = "none";
+                tour();
+                });
+            } else if (tXwins > tOwins && (tOwins + tXwins + tDraw === 3)) {
+                document.getElementById("winner-name").textContent = player1 + " Won the tournament";
+                document.getElementById("tour-btn").textContent = "New Game";
+                document.getElementById("tour-btn").addEventListener('click', function () {
+                    window.location.href = "index.html";
+                })
+            } else if (tXwins < tOwins && (tOwins + tXwins + tDraw === 3)) {
+                document.getElementById("winner-name").textContent = player2 + " Won the tournament";
+                document.getElementById("tour-btn").textContent = "New Game";
+                document.getElementById("tour-btn").addEventListener('click', function () {
+                    window.location.href = "index.html";
+                })
+            } else {
+                document.getElementById("winner-name").textContent = "Tournament Draw!";
+                document.getElementById("tour-btn").textContent = "New Game";
+                document.getElementById("tour-btn").addEventListener('click', function () {
+                    window.location.href = "index.html";
+                })
+            }
+            // localStorage.setItem("wins", player2);
         } else if (d === 9) {
             tDraw++;
             // localStorage.setItem("Xmoves", Xmoves);
@@ -187,10 +184,10 @@ function tour() {
             document.getElementById("tour-winning").style.display = "flex";
             if ((tXwins + tOwins + tDraw) < 3) {
                 document.getElementById("tour-btn").addEventListener('click', function () {
-                    document.getElementById("tour-winning").style.display = "none";
+                document.getElementById("tour-winning").style.display = "none";
                     tour();
                 });
-            } else {
+            } else if ((tXwins + tOwins + tDraw === 3) && tOwins === tXwins) {
                 document.getElementById("winner-name").textContent = "Tournament Draw!";
                 document.getElementById("tour-btn").textContent = "New Game";
                 document.getElementById("tour-btn").addEventListener('click', function () {
@@ -200,13 +197,13 @@ function tour() {
         } else if (turn === "X") {
             turn = "O";
             document.querySelector("#msg").textContent = "It's " + player2 + " Turn";
-            Omoves++;
+            // Omoves++;
         } else {
             turn = "X";
             document.querySelector("#msg").textContent = "It's " + player1 + " Turn";
-            Xmoves++;
+            // Xmoves++;
         }
     }
-    localStorage.setItem("player1", player1);
-    localStorage.setItem("player2", player2);
+    // localStorage.setItem("player1", player1);
+    // localStorage.setItem("player2", player2);
 }
